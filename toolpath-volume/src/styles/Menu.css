@@ -1,0 +1,22 @@
+.menu {
+    position: absolute;
+    top: 5.5em;
+    left: 2em;
+}
+
+.item {
+    position: absolute;
+    background-color:rgb(190, 190, 190);
+    height: 3.5em;
+    width: 20em;
+}
+
+.item.browse {
+  top: 0em;
+  text-align: center;
+}
+
+.item.input {
+  top: 5.5em;
+  text-align: left;
+}
