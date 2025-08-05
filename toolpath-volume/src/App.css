@@ -1,0 +1,39 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.svg-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+  
+.result {
+  position: absolute;
+  top: 8em;
+  left: 3em;
+  width: 10em;
+  text-align: left;
+  color: #f06020;
+  font-weight: 500;
+  font-size: 2em;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.loading {
+  position: absolute;
+  bottom: 3em;
+  left: 3em;
+  width: 10em;
+  text-align: left;
+  color: #489118;
+  font-weight: 500;
+  font-size: 2em;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

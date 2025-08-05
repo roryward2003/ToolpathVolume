@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Menu from './components/Menu.jsx'
+import SvgHandler from './components/SvgHandler.jsx'
 
-function App() {
+const App = () => {
+  const [svg, setSvg] = useState(null)
   const [depth, setDepth] = useState(0)
+  const [area, setArea] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   return (
-    <>
-      <Menu setDepth={setDepth}/>
-    </>
+    <div className="layout">
+      <Menu className="sidebar" setSvg={setSvg} setDepth={setDepth}/>
+      <div className="result"> Volume = {parseFloat(((depth/10) * area).toFixed(3))}ml </div>
+      {loading && <div className="loading">Loading SVG...</div>}
+      <SvgHandler className="svg-container" svg={svg} updateArea={setArea} setLoading={setLoading}/>
+    </div>
   )
 }
 

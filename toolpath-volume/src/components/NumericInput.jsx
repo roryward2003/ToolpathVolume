@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "../styles/Menu.css"
 
-const Input = ({submit}) => {
+const NumericInput = ({submit}) => {
     const [active, setActive] = useState(false)
     const [text, setText] = useState("")
     const [cursor, setCursor] = useState("")
@@ -12,17 +12,19 @@ const Input = ({submit}) => {
         }, 500)
     
         return () => clearInterval(intervalId);
-    }, []);
+    }, [])
 
-    function handleSubmit() {
-        submit(parseFloat(text))
-    }
+    useEffect(() => {
+        if (text !== "") {
+            submit(parseFloat(text))
+        } else {
+            submit(0)
+        }
+    }, [text])
 
-    function handleKeyDown(event) {
+    const handleKeyDown = (event) =>  {
         if (!active) { return }
-        if (event.key === "Enter") {
-            handleSubmit()
-        } else if (event.key === "Backspace" && text.length > 0) {
+        if (event.key === "Backspace" && text.length > 0) {
             setText(text.slice(0, text.length-1))
         } else if (event.key >= "0" && event.key <= "9" && text.length < 15) {
             setText(text + event.key)
@@ -37,10 +39,11 @@ const Input = ({submit}) => {
         <button className="item input"
             onFocus={() => setActive(true)}
             onBlur={() => setActive(false)}
-            onKeyDown={handleKeyDown}>
-            {text === "" ? (active ? cursor : "Enter depth here") : text}
+            onKeyDown={handleKeyDown}
+            style={{ color: (!active && text === "" ? "#4f4f4f" : "")}}>
+            {text === "" ? (active ? cursor : "Enter depth here") : text+"mm"}
         </button>
     )
 }
 
-export default Input
+export default NumericInput

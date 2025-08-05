@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/Menu.css'
-import Input from './Input.jsx'
+import NumericInput from './NumericInput.jsx'
+import Browse from './Browse.jsx'
 
-const Menu = ({setDepth}) => {
+const Menu = ({setSvg, setDepth}) => {
     return (
         <div className="menu">
-            <button className="item browse">
-                Browse for SVG
-            </button>
-            <Input className="item input" submit={setDepth}/>
+            <Browse submit={setSvg}/>
+            <NumericInput submit={setDepth}/>
         </div>
     )
 }
